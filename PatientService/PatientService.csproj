@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PatientService.Core\PatientService.Core.csproj" />
+    <ProjectReference Include="..\PatientService.DataAccess\PatientService.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using PatientService.Core.Domain;
 using System;
 using System.Collections.Generic;
@@ -57,6 +58,7 @@ namespace PatientService.DataAccess
                 .UseSqlServer("data source=localhost;initial catalog=Patients;" +
                 "user=sa;password=23011986;App=EntityFramework;TrustServerCertificate=True")
                 ;
+            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
         }
     }
 }
