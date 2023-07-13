@@ -38,6 +38,15 @@ namespace PatientService.DataAccess
             modelBuilder.Entity<ContactsInfoEntity>().Navigation(x => x.Patient);
             modelBuilder.Entity<CardsPatientEntity>().Navigation(x => x.Patient);
 
+            modelBuilder.Entity<ContactsInfoEntity>().Property(x => x.Email).HasMaxLength(100);
+            modelBuilder.Entity<ContactsInfoEntity>().Property(x => x.Phone).HasMaxLength(20).IsRequired();
+            modelBuilder.Entity<CardsPatientEntity>().Property(x => x.Snils).HasMaxLength(20).IsRequired();
+            modelBuilder.Entity<CardsPatientEntity>().Property(x => x.Insurance).HasMaxLength(50).IsRequired();
+            modelBuilder.Entity<PatientEntity>().Property(x => x.FirstName).HasMaxLength(50).IsRequired();
+            modelBuilder.Entity<PatientEntity>().Property(x => x.LastName).HasMaxLength(50).IsRequired();
+            modelBuilder.Entity<PatientEntity>().Property(x => x.MiddleName).HasMaxLength(50);
+            modelBuilder.Entity<PatientEntity>().Property(x => x.Sex).HasMaxLength(1).IsRequired();
+            modelBuilder.Entity<PatientEntity>().Property(x => x.BirthDate).IsRequired();
 
 
         }
