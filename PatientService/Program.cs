@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using PatientService.Core.Abstractions.Repositories;
@@ -18,8 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 
+//TODO Переделать на SQL Server
 builder.Services.AddDbContext<DataContext>(opt =>
-        opt.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionString")));
+        opt.UseSqlite(builder.Configuration.GetValue<string>("ConnectionString")));
 
 builder.Services.AddOpenApiDocument(options =>
 {
