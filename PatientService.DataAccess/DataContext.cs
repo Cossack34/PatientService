@@ -54,10 +54,7 @@ namespace PatientService.DataAccess
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseSqlServer("data source=localhost;initial catalog=Patients;" +
-                "user=sa;password=23011986;App=EntityFramework;TrustServerCertificate=True")
-                ;
+            ///БД подключаем в Program.cs WebHost
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
         }
     }
